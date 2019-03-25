@@ -130,8 +130,6 @@ function diffElementNodes(dom, newVNode, oldVNode, isSvg, excessDomChildren) {
 
 			diffChildren(dom, newVNode, oldVNode, newVNode.type==='foreignObject' ? false : isSvg, excessDomChildren);
 			diffProps(dom, newProps, oldProps, isSvg);
-
-			dom.props = newProps;
 		}
 	}
 

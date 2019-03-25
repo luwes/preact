@@ -81,15 +81,19 @@ function setProperty(dom, name, value, oldValue, isSvg) {
 		}
 		(dom._listeners || (dom._listeners = {}))[name] = value;
 	}
-	else if (name!=='list' && name!=='tagName' && !isSvg && (name in dom)) {
+	// Wesley 2019-03-24
+	// Removed (name in dom) condition so most props are added on the dom element.
+	else if (name!=='list' && name!=='tagName' && !isSvg) {
 		dom[name] = value==null ? '' : value;
 	}
-	else if (value==null || value===false) {
-		dom.removeAttribute(name);
-	}
-	else if (typeof value!=='function') {
-		dom.setAttribute(name, value);
-	}
+	// Wesley 2019-03-24
+	// Removed removeAttribute and setAttribute, handle this in Swiss element.
+	// else if (value==null || value===false) {
+	// 	dom.removeAttribute(name);
+	// }
+	// else if (typeof value!=='function') {
+	// 	dom.setAttribute(name, value);
+	// }
 }
 
 /**
