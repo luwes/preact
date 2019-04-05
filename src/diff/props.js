@@ -81,6 +81,14 @@ function setProperty(dom, name, value, oldValue, isSvg) {
 		}
 		(dom._listeners || (dom._listeners = {}))[name] = value;
 	}
+	else if (name === 'attrs') {
+		for (const v in value) {
+			dom.setAttribute(v, value[v]);
+		}
+	}
+	else if (name.substr(0, 5) === 'data-') {
+		dom.setAttribute(name, value);
+	}
 	// Wesley 2019-03-24
 	// Removed (name in dom) condition so most props are added on the dom element.
 	else if (name!=='list' && name!=='tagName' && !isSvg) {
