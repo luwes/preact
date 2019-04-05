@@ -51,7 +51,7 @@ export function diff(dom, parentDom, newVNode, oldVNode, isSvg, excessDomChildre
 		if (options.diffed) options.diffed(newVNode);
 	}
 	catch (e) {
-
+		if (options.catch) options.catch(e);
 	}
 
 	return dom;
@@ -147,7 +147,7 @@ export function applyRef(ref, value) {
 		else ref.current = value;
 	}
 	catch (e) {
-
+		if (options.catch) options.catch(e);
 	}
 }
 
