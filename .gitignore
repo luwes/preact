@@ -2,6 +2,7 @@
 node_modules
 npm-debug.log
 dist
+!/dist/
 package-lock.json
 .vscode
 .idea

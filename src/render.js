@@ -1,5 +1,4 @@
-import { EMPTY_OBJ, EMPTY_ARR } from './constants';
-import { commitRoot } from './diff/index';
+import { EMPTY_ARR } from './constants';
 import { diffChildren } from './diff/children';
 import { createElement, Fragment } from './create-element';
 
@@ -13,9 +12,7 @@ export function render(vnode, parentDom) {
 	let oldVNode = parentDom._prevVNode;
 	vnode = createElement(Fragment, null, [vnode]);
 
-	let mounts = [];
-	diffChildren(parentDom, parentDom._prevVNode = vnode, oldVNode, EMPTY_OBJ, parentDom.ownerSVGElement!==undefined, oldVNode ? null : EMPTY_ARR.slice.call(parentDom.childNodes), mounts, vnode);
-	commitRoot(mounts, vnode);
+	diffChildren(parentDom, parentDom._prevVNode = vnode, oldVNode, parentDom.ownerSVGElement!==undefined, oldVNode ? null : EMPTY_ARR.slice.call(parentDom.childNodes), vnode);
 }
 
 /**
